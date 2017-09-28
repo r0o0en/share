@@ -30,8 +30,8 @@
 							<p>打开吉粮惠民APP购物<br />购买即补贴粮票</p>
 						</div>
 					</div>
-					<a class="open-app-btn flex-1" href="HMClient://" id="openApp">打开APP</a>
-					<!--<a class="open-app-btn flex-1" href="javascript:;" id="openApp">打开APP</a>-->
+					<a class="open-app-btn flex-1" href="hmclient://TYPE=1&ID=110" id="openApp">打开APP</a>
+					<!--<a class="open-app-btn flex-1" id="openApp">打开APP</a>-->
 				</div>
 			</div>
 			
@@ -109,6 +109,15 @@
 		<script src="js/tool-nativeSchema.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/index_load.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			function couponHtml(li) {
+				var arr = [];
+				if(100 >= li.returnPointPercent && li.returnPointPercent >0 ){ /**(现金消费返积分比例)*/
+					arr = ['补贴粮票',li.returnPointPercent]; 
+				}else if(100>= li.deductPricePercent &&  li.deductPricePercent >0 ){/**(积分消费抵扣百分比)*/
+					arr = ['粮票抵扣',li.deductPricePercent];
+				}
+				return arr;
+			};
 			$(function () {
 				
 				var data={},type;
@@ -152,10 +161,10 @@
 						$(".open-app").remove();
 					},400)
 				})
-				$("#openApp").on('click',function(e){
-					e.preventDefault();
-					nativeSchema.loadSchema();
-				});
+//				$("#openApp").on('click',function(e){
+//					e.preventDefault();
+//					nativeSchema.loadSchema();
+//				});
 				
 				
 				function addContent(list) {//更新页面html
@@ -168,8 +177,11 @@
 					}
 					
 					//幻灯片
-					if(typeof list.imgs != 'undefined'){
-						var arr = getImgurl(list.imgs);
+					var imgs;
+					imgs = (type == 'spellLuck') ? list.goodsImg :  list.imgs; /*  normal标准  spellLuck 拼手气*/ 
+					
+					if(typeof imgs != 'undefined'){
+						arr = getImgurl(imgs);
 						if(arr && arr.length) {
 							for( i in arr) {
 								str += '<div class="swiper-slide"><img src="' + arr[i] + '@800w" alt=""></div>';
@@ -198,7 +210,7 @@
 									var now = before; // 现在的价格 
 									before = false ; // 之前价格 
 								}
-							
+								
 								str += '<span class="cl-red">￥'+now+'</span>';
 								if(before) {
 									str += '<small><strike>￥'+before+'</strike></small>'
@@ -251,7 +263,6 @@
 					
 					//加载详情
 					str = false;
-					
 					if(typeof list.desc  != 'undefined'){str = list.desc} 
 					var loading = false,
 						callback = function() {
