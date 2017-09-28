@@ -1,0 +1,104 @@
+/*******************************
+    -------[=初始化]-------
+********************************/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html,
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+  overflow-y: scroll;
+}
+body {
+  position: relative;
+}
+input,
+button {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border: none;
+}
+fieldset,
+img {
+  border: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+em {
+  font-style: normal;
+}
+input,
+button,
+select,
+textarea,
+a {
+  outline: none;
+}
+/*禁用了文本的拖拉，尤其在谷歌下*/
+/*textarea { resize:none; }*/
+/*为了使文本段落左右两边对齐*/
+/*p{text-align:justify; text-justify:distribute;}*/
+a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+a,
+a:hover {
+  text-decoration: none;
+}
+.line,
+.line:hover,
+.hover-line:hover {
+  text-decoration: underline;
+}
+.btn,
+a {
+  cursor: pointer;
+}
+.btn.disabled,
+.btn[disabled] {
+  cursor: url('../../img/ico/ico-error.png'), help;
+  /*background-color: #ccc;*/
+}
+.btn[disabled='false'] {
+  cursor: pointer;
+}

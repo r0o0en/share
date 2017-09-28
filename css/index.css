@@ -1,0 +1,525 @@
+/*******************************
+    -------[=通用参数]-------
+********************************/
+/*******************************
+    -------[=媒体查询规格]-------
+********************************/
+/*******************************
+    -------[=通用封装]-------
+********************************/
+/*----- 盒子分级 -----*/
+/*----- 可见度 -----*/
+/*----- 圆角 -----*/
+/*----- 过渡时间 -----*/
+/*----- 2D转换 -----*/
+/*----- 阴影 -----*/
+/*----- margin -----*/
+/*----- padding -----*/
+/*----- float -----*/
+/*----- display -----*/
+/*----- 溢出 隐藏 -----*/
+/*----- width -----*/
+/*----- background -----*/
+/*----- bt -----*/
+strike {
+  color: #ccc;
+}
+.clear-bo {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.flex {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex > .flex-1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.lib-context {
+  padding: 10px 15px;
+}
+.cl-red {
+  color: #FF2C4C;
+}
+.ico-40 {
+  width: 40px;
+  height: 40px;
+}
+.ico-30 {
+  width: 30px;
+  height: 30px;
+}
+.no-radius,
+.no-radius.weui-btn:after {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.weui-btn_yello {
+  background-color: #fe9b00;
+}
+.weui-btn_red {
+  background-color: #ff2c4c;
+}
+.weui-btn_yello:hover:after,
+.weui-btn_red:hover:after {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.weui-btn_yello:after,
+.weui-btn_red:after {
+  border: none;
+}
+.weui-btn.flex-1 + .weui-btn.flex-1 {
+  margin-top: 0;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+ul,
+ol {
+  list-style: none;
+}
+html,
+body,
+.page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.page {
+  background-color: #eee;
+  overflow-y: scroll;
+}
+.yjjs {
+  -webkit-overflow-scrolling: touch;
+}
+.page-content {
+  width: 100%;
+  overflow-x: hidden;
+}
+.weui-cells {
+  z-index: 1;
+}
+/*
+ *商品详情页
+ * */
+/*打开APP*/
+.open-app {
+  position: fixed;
+  top: -51px;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  color: white;
+  -webkit-transition: 0.6s ease;
+  -moz-transition: 0.6s ease;
+  -ms-transition: 0.6s ease;
+  -o-transition: 0.6s ease;
+  transition: 0.6s ease;
+}
+.open-app.show {
+  top: 0;
+}
+.open-app,
+.open-app * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.open-app .info {
+  height: inherit;
+  padding-right: 20px;
+}
+.open-app .esc {
+  display: block;
+  height: inherit;
+  width: 35px;
+  text-align: center;
+}
+.open-app .esc i {
+  vertical-align: middle;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  font-style: normal ;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  line-height: 15px;
+}
+.open-app .logo {
+  height: 30px;
+  margin: 10px 5px 0 0;
+}
+.open-app .logo + p {
+  padding: 5px 0;
+  line-height: 20px;
+  font-size: 0.65rem;
+}
+.open-app .open-app-btn {
+  display: block;
+  background-color: #ff2c4c;
+  height: inherit;
+  text-align: center;
+  color: white;
+}
+.open-app .open-app-btn:active {
+  -webkit-box-shadow: inset 0 5px 5px #cb0e2a;
+  -moz-box-shadow: inset 0 5px 5px #cb0e2a;
+  box-shadow: inset 0 8px 8px #cb0e2a;
+}
+/*头部 */
+.page-header {
+  background-color: white;
+}
+.page-header h1 {
+  font-size: 1rem;
+  font-family: arial, simsun, "microsoft yahei";
+  font-weight: 500;
+  color: #333;
+}
+/* 幻灯 */
+.swiper-container {
+  background-color: white;
+}
+.swiper-container img {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  border: none;
+  -o-object-fit: fill;
+  object-fit: fill;
+  height: 13rem;
+}
+.swiper-container .swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #999999 !important;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+}
+.swiper-container .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: rgba(51, 51, 51, 0.6) !important;
+  border-color: white;
+}
+.weui-cells {
+  margin-top: 0.5rem;
+}
+.price-line {
+  line-height: 1.5rem;
+}
+.price-line > *:first-child {
+  position: relative;
+}
+.price-line .float-top {
+  width: 100%;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+}
+.price-line .float-top .stamps-subsidies {
+  transform-origin: left bottom;
+  transform: scale(0.7);
+}
+.price-line .weui-progress__bar {
+  width: 80%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.price-line .weui-progress__bar span {
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  font-size: 0.6rem;
+  line-height: 1.3;
+}
+.price-line .amount {
+  right: 0%;
+}
+.price-line .left-amount {
+  left: 0%;
+}
+.price-line small {
+  color: #ccc;
+}
+.weui-progress__inner-bar.red {
+  background-color: #ff0000;
+}
+.cu-quantity {
+  *zoom: 1;
+}
+.cu-quantity:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.cu-quantity:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.cu-quantity,
+.cu-quantity * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.cu-quantity > *:first-child {
+  margin-left: 0;
+}
+.cu-quantity button,
+.cu-quantity input {
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  display: block;
+  float: left;
+  margin-left: 2px;
+  border: none;
+  outline: none;
+  background-color: #f5f5f5;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.cu-quantity button {
+  font-size: 1rem;
+  color: #60646f;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
+  background-image: url('../img/add01.png');
+  background-size: auto 0.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.cu-quantity button:active {
+  -webkit-box-shadow: inset 0 5px 5px #999;
+  -moz-box-shadow: inset 0 5px 5px #999;
+  box-shadow: inset 0 5px 5px #999;
+}
+.cu-quantity button[disabled] {
+  color: #ccc;
+  background-image: url('../img/add02.png');
+}
+.cu-quantity button.cu-minus {
+  background-image: url('../img/minus01.png');
+}
+.cu-quantity button.cu-minus[disabled] {
+  color: #ccc;
+  background-image: url('../img/minus02.png');
+}
+.cu-quantity input {
+  text-align: center;
+}
+.occupy-footer,
+.page-footer {
+  display: none;
+}
+.occupy-footer {
+  height: 56px;
+}
+.page-footer {
+  width: 100%;
+}
+.page-footer.page-footer-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+.up-hint a:active {
+  background-color: white;
+}
+.load-more-info-content {
+  background-color: white;
+  font-size: 1rem;
+}
+.load-more-info-content img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+/*弹窗*/
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+}
+.popup,
+.popup * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.popup .popup-wp {
+  width: 80%;
+  margin: 30px auto;
+  position: relative;
+}
+.popup .popup-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+.popup .popup-close {
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 3px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 26px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  text-align: center;
+  overflow: hidden;
+  font-size: 30px;
+  font-weight: 100;
+  color: white;
+}
+/*
+ * 酒店详情
+ */
+.bg-f2f1f1 {
+  background-color: #f2f1f1;
+}
+.text-center {
+  text-align: center;
+}
+.hotel-details {
+  background-color: #f2f1f1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 50px;
+}
+.hotel-details .fixed-header {
+  background-color: #f2f1f1;
+  height: 50px;
+  line-height: 50px;
+}
+.hotel-details .fixed-header ul li.active {
+  color: #e88564;
+}
+.hotel-details .swiper-container {
+  margin-bottom: 10px;
+}
+.hotel-details dl dt {
+  font-size: 0.7rem;
+}
+.hotel-details dl dd {
+  margin-bottom: 0.5rem;
+}
+.hotel-details .introducechn {
+  -webkit-line-clamp: initial;
+}
+.hotel-details .weui-media-box__desc {
+  line-height: 1.4;
+}
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: block;
+  width: 100%;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.stamps-subsidies {
+  float: left;
+  font-size: 0;
+  height: 18px;
+  position: relative;
+  padding-left: 60px;
+}
+.stamps-subsidies span {
+  text-align: center;
+  border-width: 1px;
+  font-size: 12px;
+  line-height: 16px;
+  height: inherit;
+  border-color: #ff7b00;
+}
+.stamps-subsidies span.text {
+  text-align: center;
+  display: block;
+  width: 60px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-style: solid;
+  color: white;
+  background-color: #ff7b00;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.stamps-subsidies span.number {
+  text-align: center;
+  padding: 0 4px;
+  display: block;
+  border-left-width: 0px;
+  border-style: dashed;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}

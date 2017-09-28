@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>商品详情页-判断APP</title>
+		<meta name="author" content=""/>
+		<meta name="keywords" content=""/>
+		<meta name="description" content=""/>
+		
+		<meta name="renderer" content="webkit">
+		<meta http-equiv= "X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+		<meta name="telephone=no" content="format-detection">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		
+		<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+		<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body>
+		<div class="open-app">
+			<div class="flex">
+				<div class="info flex">
+					<div class="esc "><i>x</i></div>
+					<div class="flex-1 flex">
+						<img class="logo" src="img/logo.png"/>
+						<p>打开吉粮惠民APP购物<br />购买即补贴粮票</p>
+					</div>
+				</div>
+				<a class="open-app-btn flex-1" href="HMClient://" id="openApp">打开APP</a>
+			</div>
+		</div>
+		<div class="page" >
+			<div class="page-content">
+				
+				<section class="swiper-container">
+					<div class="swiper-wrapper">
+					    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+					    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+					    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+					</div>
+					<div class="swiper-pagination"></div>
+				</section>
+				
+				<div class="page-header">
+					<h1 class="lib-context">苹果7红色当天发/12期分期APPLE/苹果IPHONE全网通4G国行手机</h1>
+					<div class="flex lib-context price-line">
+						<div class="flex-1">
+							<!--<span class="cl-red">￥5668</span><small><strike>￥6668</strike></small>-->
+							<!--<div class="weui-progress__bar">
+								<span class="left-amount">99</span>
+					          	<div class="weui-progress__inner-bar js_progress" style="width: 80%;"></div>
+					          	<span class="amount">100</span>
+					       </div>-->
+					       	<div class="float-top">
+								<p class="stamps-subsidies fl-l"><span class="text">补贴粮票</span><span class="number">100%</span></p>	
+					       	</div>
+					        <span class="cl-red">60份</span><small>/80份</small>
+						</div>
+						<div class="cu-quantity">
+							<button class="cu-minus"></button>
+							<input  class="cu-input" type="number" value="1" maxlength="" />
+							<button class="cu-add" ></button>
+						</div>
+					</div>
+				</div>
+				
+				<section class="weui-cells">
+				  <a class="weui-cell weui-cell_access" href="javascript:;">
+				  	<div class="weui-cell__hd"><img class=" ico-30 " src="img/ico-check.png"></div>
+				    <div class="weui-cell__bd">
+				      <p>已选："32G" "皓月银"</p>
+				    </div>
+				    <div class="weui-cell__ft">
+				    </div>
+				  </a>
+				</section>
+				
+				<section class="weui-cells">
+				  <a class="weui-cell weui-cell_access" href="javascript:;">
+				  	<div class="weui-cell__hd"><img class=" ico-30 " src="img/ico-check.png"></div>
+				    <div class="weui-cell__bd">
+				      <p>深圳华为手机专卖店</p>
+				    </div>
+				    <div class="weui-cell__ft">
+				    </div>
+				  </a>
+				</section>
+				<section class="weui-cells">
+				  <a class="weui-cell weui-cell_access" href="javascript:;">
+				    <div class="weui-cell__bd">
+				      <p style="text-align: center;">上拉查看图文详情</p>
+				    </div>
+				  </a>
+				</section>
+				
+				<div class="info-content">
+					
+				</div>
+				
+				<div class="weui-loadmore">
+				  <i class="weui-loading"></i>
+				  <span class="weui-loadmore__tips">正在加载</span>
+				</div>
+				<div class="occupy-footer"></div>
+			</div>
+			
+		</div>
+			<footer class="page-footer page-footer-fixed">
+				<div class="flex">
+					<a href="javascript:;" class="flex-1 weui-btn weui-btn_yello no-radius">加入购物车</a>
+					<a href="javascript:;" class="flex-1 weui-btn weui-btn_red no-radius">去结算</a>
+				</div>
+			</footer>
+		
+	    
+		
+		<script src="js/zepto/zepto.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/weui/jquery-weui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper-3.4.2.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function () {
+				$(".swiper-container").swiper({
+					pagination:'.swiper-pagination',
+					autoplay:"5000"
+				});
+				
+				var loading = false ;
+				$($('.page-content')[0]).infinite(10).on("infinite", function() {
+				  	if(loading) return;
+				  	loading = true;
+				  	setTimeout(function() {
+				    	$(".info-content").append("<p> 我是新加载的内容 </p>");
+				    	loading = false;
+				  	}, 1000);   //模拟延迟
+				});
+				
+				//加减控制
+				var cuQuantity = function(data){
+					var defaults = {
+						max:9999,
+						min:0,
+						$minus:$('.cu-quantity .cu-minus'),
+						$add:$('.cu-quantity .cu-add'),
+						$input:$('.cu-quantity .cu-input')
+					};
+					var  opt = $.extend({},defaults,data);
+					function judegMin(){
+						if( opt.$input.val() <= opt.min ){
+							opt.$minus.prop('disabled',true);
+							return false;
+						}else{
+							opt.$minus.removeAttr('disabled');
+							return true;
+						}
+					};
+					function judegMax(){
+						if( opt.$input.val() >= opt.max ){
+							opt.$add.prop('disabled',true);
+							return false;
+						}else{
+							opt.$add.removeAttr('disabled');
+							return true;
+						}
+					};
+					judegMin();
+					judegMax();
+					opt.$minus.on('click',function(e){
+						opt.$input.val(function(i,v){
+							if(v.length<1){return opt.min;}
+							return parseInt(v)-1}
+						);
+						judegMin();
+						judegMax();
+					})
+					opt.$add.on('click',function(e){
+						opt.$input.val(function(i,v){
+							if(v.length<1){return opt.min > 0 ? opt.min : 1;}
+							return parseInt(v)+1}
+						);
+						judegMin();
+						judegMax();
+					})
+					opt.$input.on('input propertychange ',function(e){
+						var k = v = parseInt( $(this).val() );
+						if( v || v === 0){
+							judegMin() ? '' : k = opt.min ; 
+							judegMax() ? '' : k = opt.max ;
+							$(this).val(k);
+						}else{return false;}
+					});
+				}
+				cuQuantity();
+				
+				//弹窗
+				var poput = {
+					ele:{
+						$wp:$('.popup'),
+						$btn_show:$('.btn-popup-show'),
+						$btn_hide:$('.btn-popup-hide')
+					},
+					show:function(id){
+						$(id).fadeIn();
+					},
+					hide:function(id){
+						$(id).fadeOut();
+					},
+					init:function(){
+						var _this = this;
+						_this.ele.$btn_show.on('click',function(e){
+							var target = $(this).data('show-id');
+							if(!target){return false;}
+							_this.show('#'+target);
+						})
+						_this.ele.$btn_hide.on('click',function(e){
+							var target = $(this).data('show-id');
+							if(!target){return false;}
+							_this.hide('#'+target);
+						})
+						_this.ele.$wp.on('click',function(e){
+							$(this).fadeOut();
+						})
+						_this.ele.$wp.children().on('click',function(e){
+							e.stopPropagation();
+						})
+					}
+				}
+				poput.init();
+				
+				var creatPoput = function(data){
+					var defaults = {
+						class:''
+					}
+					var opt = $.extend({},defaults,data);
+					var ele = {
+						$wp : $('<div class="popup '+opt.class+' "> <div class="popup-wp"></div></div>'),
+						$close:$('<span class="popup-close">×</span>'),
+						$body:$('<div class="popup-content"></div>')
+					}
+					ele.$wp.children().append(ele.$body);
+					ele.$wp.append(ele.$close);
+					$(document.body).append(ele.$wp); 
+					ele.$close.on('click',function (e) {
+						ele.$wp.fadeOut();
+					})
+					return {
+						opt:opt,
+						ele:ele,
+						show:function (){
+							ele.$wp.fadeIn();
+						},
+						hide:function (){
+							ele.$wp.fadeOut();
+						}
+					}
+				}
+//				creatPoput().show();
+				
+				
+				
+				
+				//获取参数
+				function getRequest() {  
+				   var url = location.search; //获取url中"?"符后的字串  
+				   var theRequest = new Object();  
+				   if (url.indexOf("?") != -1) {  
+				      var str = url.substr(1);  
+				      strs = str.split("&");  
+				      for(var i = 0; i < strs.length; i ++) {  
+				         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+				      }  
+				   }  
+				   return theRequest;  
+				} 
+				var a = getRequest();
+				console.log(a);
+				
+			})
+		</script>
+	</body>
+</html>
