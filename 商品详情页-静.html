@@ -169,8 +169,8 @@
 					opt.$minus.on('click',function(e){
 						opt.$input.val(function(i,v){
 							if(v.length<1){return opt.min;}
-							return parseInt(v)-1}
-						);
+							return parseInt(v)-1;
+						});
 						judegMin();
 						judegMax();
 					})

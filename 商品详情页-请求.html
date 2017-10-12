@@ -30,8 +30,8 @@
 							<p>打开吉粮惠民APP购物<br />购买即补贴粮票</p>
 						</div>
 					</div>
-					<a class="open-app-btn flex-1" href="hmclient://TYPE=1&ID=110" id="openApp">打开APP</a>
-					<!--<a class="open-app-btn flex-1" id="openApp">打开APP</a>-->
+					<!--<a class="open-app-btn flex-1" href="hmclient://TYPE=1&ID=110" id="openApp">打开APP</a>-->
+					<a class="open-app-btn flex-1" id="openApp">打开APP</a>
 				</div>
 			</div>
 			
@@ -109,15 +109,7 @@
 		<script src="js/tool-nativeSchema.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/index_load.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			function couponHtml(li) {
-				var arr = [];
-				if(100 >= li.returnPointPercent && li.returnPointPercent >0 ){ /**(现金消费返积分比例)*/
-					arr = ['补贴粮票',li.returnPointPercent]; 
-				}else if(100>= li.deductPricePercent &&  li.deductPricePercent >0 ){/**(积分消费抵扣百分比)*/
-					arr = ['粮票抵扣',li.deductPricePercent];
-				}
-				return arr;
-			};
+			
 			$(function () {
 				
 				var data={},type;
@@ -161,10 +153,12 @@
 						$(".open-app").remove();
 					},400)
 				})
-//				$("#openApp").on('click',function(e){
-//					e.preventDefault();
-//					nativeSchema.loadSchema();
-//				});
+				$("#openApp").on('click',function(e){
+					e.preventDefault();
+					nativeSchema.loadSchema(
+//						{schema:"goodsId="+data.goodsId}
+						);
+				});
 				
 				
 				function addContent(list) {//更新页面html
@@ -202,25 +196,27 @@
 					if(typeof list.price != 'undefined'){
 						var str = '',
 							cuQuantity_data ={};
-						var before = parseInt( list.price ) ; //获取价格
-							if(before) {
-								if(list.deductPricePercent){ //粮票可抵扣百分比
-									var now = ( 1 - parseInt( list.deductPricePercent )/100 )*before //现在的价格 ||
-								}else{
-									var now = before; // 现在的价格 
-									before = false ; // 之前价格 
+						var now = parseFloat( list.price ) ; //获取价格
+							if(now) {
+								if(list.returnPointPercent){ //粮票补贴
+									str += labelHtml('粮票补贴',list.returnPointPercent);
+								}else if(list.deductPricePercent){ //粮票可抵扣百分比
+									str += labelHtml('粮票抵扣',list.deductPricePercent);
+									var before = now ;
+									var now = (( 1 - parseInt( list.deductPricePercent )/100 )*now);  //现在的价格 ||
 								}
-								
+								now = now.toFixed(2);
 								str += '<span class="cl-red">￥'+now+'</span>';
 								if(before) {
-									str += '<small><strike>￥'+before+'</strike></small>'
+//									str += '<small><strike>￥'+before+'</strike></small>'
+									str += '<small>&nbsp;+&nbsp;'+(before-now).toFixed(2)+'<small>粮票</small></small>'
 								}
 							}else{
 								str += '<span class="cl-red">暂无</span>';
 							}
 						if(type == 'normal'){ // 标准
 							if(typeof list.limited  != 'undefined'){
-								cuQuantity_data.max = list.limited;	
+								cuQuantity_data.max = list.limited;
 							}
 						}else if(type == 'spellLuck'){ // 拼手气
 							if( typeof list.amount != undefined && typeof list.leftAmount != undefined && typeof list.percent != undefined ){
@@ -257,7 +253,7 @@
 					var str = getAttribute(data,'storeName');
 					if(str){
 						$('.store-name').text(str);
-					}else{						
+					}else{
 						$('.store-name').text('商城');
 					}
 					
@@ -296,7 +292,21 @@
 					};
 					
 				}
-				
+			
+			function couponHtml(li) {
+									var arr = [];
+									if(100 >= li.returnPointPercent && li.returnPointPercent >0 ){ /**(现金消费返积分比例)*/
+										arr = ['补贴粮票',li.returnPointPercent]; 
+									}else if(100>= li.deductPricePercent &&  li.deductPricePercent >0 ){/**(积分消费抵扣百分比)*/
+										arr = ['粮票抵扣',li.deductPricePercent];
+									}
+									return arr;
+			};
+			function labelHtml(type,num) {
+				return '<div class="float-top">'+
+						'<p class="stamps-subsidies fl-l"><span class="text">'+type+'</span><span class="number">'+num+'%</span></p>'+	
+					    '</div>';
+			};
 		})	
 		</script>
 	</body>

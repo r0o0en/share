@@ -192,7 +192,8 @@ body,
   background-color: white;
 }
 .page-header h1 {
-  font-size: 1rem;
+  font-size: 0.75rem;
+  font-size: 1.4;
   font-family: arial, simsun, "microsoft yahei";
   font-weight: 500;
   color: #333;
@@ -262,6 +263,7 @@ body,
 }
 .price-line small {
   color: #ccc;
+  font-size: 12px;
 }
 .weui-progress__inner-bar.red {
   background-color: #ff0000;
@@ -511,6 +513,7 @@ body,
   border-bottom-left-radius: 4px;
 }
 .stamps-subsidies span.number {
+  color: #ff7b00;
   text-align: center;
   padding: 0 4px;
   display: block;

@@ -40,7 +40,7 @@
         PROTOCAL:"HMClient",
 
         // 主页
-        HOME: "",
+        HOME: "openapp",
         
         // 唤起失败时的跳转链接
         FAILBACK: {
@@ -112,6 +112,7 @@
 
             // 如果是安卓chrome浏览器，则通过intent方式打开
             if (isAndroidChrome) {
+//          	schemaStr = AppConfig.PROTOCAL + "://" + schemaStr;
                 schemaStr =  "intent://" + schemaStr +"#Intent;"  +
                              "scheme="   + AppConfig.PROTOCAL          + ";"+
                              "package="  + AppConfig.APK_INFO.PKG      + ";"+

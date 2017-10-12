@@ -25,7 +25,10 @@ var browser = {
 
 //获取参数
 function getRequest() {
-	var url = decodeURI(location.search); //获取url中"?"符后的字串
+	var href =location.search;
+//	href=href.replace(/%7B/ig,'{');
+//	href=href.replace(/%7D/ig,'}');
+	var url = decodeURI(href); //获取url中"?"符后的字串
 	var theRequest = new Object();
 	if(url.indexOf("?") != -1) {
 		var str = url.substr(1);

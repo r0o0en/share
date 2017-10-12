@@ -33,6 +33,8 @@
 		<a href='http://192.168.1.188/商品详情页/商品详情页-请求.html?data={"type":"normal","goodsId":"2352752752292864","storeName":"深圳华为手机专卖店","url":"http://app.jlhmsh.com/v1.1/goods/getGoods"}'>测试连接-抵扣</a>
 		<a href='http://192.168.1.188/商品详情页/商品详情页-请求.html?data=%7B"type":"spellLuck","goodsId":"2212611664753664","storeName":"深圳华为手机水果店","url":"http://app.jlhmsh.com\/v1.1\/goods\/getGoods"%7D'>测试连接（拼手气型）</a>
 		<br /><br />
+		<a href='http://dl.jlhmsh.com/share/goods.html?data=%7B%22type%22:%22normal%22,%22goodsId%22:%222195605685482496%22,%22storeName%22:%22%E5%95%86%E5%9F%8E%22,%22url%22:%22http://test1.hmsh.com/v1.1/goods/getGoods%22%7D&from=groupmessage'>打不开</a>
+		<a href='http://192.168.1.188/商品详情页/商品详情页-请求.html?data=%7B%22type%22:%22normal%22,%22goodsId%22:%222195605685482496%22,%22storeName%22:%22%E5%95%86%E5%9F%8E%22,%22url%22:%22http://test1.hmsh.com/v1.1/goods/getGoods%22%7D&from=groupmessage'>打不开</a>
 		
 		<a href="http://192.168.1.188/商品详情页/酒店详情页-静.html">酒店详情页</a>
 		<a href='http://192.168.1.188/商品详情页/酒店详情页.html?data={"hotelId":"76","url":"http:\/\/test.hmsh.com\/v1.1\/hotel\/getHotAtDetails"}'>酒店详情页-带酒店id</a>
@@ -60,10 +62,8 @@
 		<script src="js/zepto/zepto.min.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript">
-			
 			$("#openApp").on('click',function(e){
 			    e.preventDefault();
-			    
 			    //ios 测试有效
 			    window.location = 'HMClient://openapp';
 			    setTimeout(function(){window.location = 'https://itunes.apple.com/cn/app/id1156008352?l=zh&ls=1&mt=8'},25);
@@ -76,15 +76,13 @@
 //			    window.location.href = 'HMClient://openapp';
 			    //没有安装应用会执行下面的语句
 //			    setTimeout(function(){window.location = 'https://itunes.apple.com/cn/app/id1156008352?l=zh&ls=1&mt=8'},600);1
-			})
-			
+			});
 			function isWeixinBrowser() {
 			    return (/micromessenger/.test(ua)) ? true : false;
-			}
-			
+			};
 			function isQQBrowser() {
 			    return (ua.match(/QQ/i) == "qq") ? true : false;
-			}
+			};
 		</script>
 		
 		
@@ -95,34 +93,7 @@
 //			    versions:function(){
 //			        var u = navigator.userAgent, 
 //			            app = navigator.appVersion;
-//			        return {
-//			            trident: u.indexOf('Trident') > -1, //IE内核
-//			            presto: u.indexOf('Presto') > -1, //opera内核
-//			            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-//			            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
-//			            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-//			            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-//			            android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
-//			            iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
-//			            iPad: u.indexOf('iPad') > -1, //是否iPad
-//			            webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
-//			            weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
-//			            qq: u.match(/\sQQ/i) == " qq" //是否QQ
-//			        };
-//			    }(),
-//			    language:(navigator.browserLanguage || navigator.language).toLowerCase()
-//			}
-//			var str='';
-//			for( i in browser.versions){
-//				console.log(i,browser.versions[i]);
-//				str += '（ '+i +' : '+ browser.versions[i] +' ）-';
-//			}
-//			
-//			
-//			var parent = document.getElementById('box'); //2、找到父级元素
-//			var  a = document.createElement('a');
-//			a.setAttribute('id','openApp');
-//			
+
 //							 
 //			if(browser.versions.ios == true){
 //				a.innerHTML = 'ios：吉粮惠民';
@@ -141,11 +112,6 @@
 //			        },3000)  
 //			    };  
 //			}
-			
-			
-			
-			
-		    
 		</script>  
 	</body>
 </html>
