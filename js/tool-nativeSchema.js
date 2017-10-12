@@ -37,7 +37,8 @@
     var AppConfig = {
 
         // 协议头
-        PROTOCAL:"HMClient",
+        PROTOCAL:"hmclient",
+        PROTOCAL:"hmclient",
 
         // 主页
         HOME: "openapp",
@@ -113,16 +114,18 @@
             // 如果是安卓chrome浏览器，则通过intent方式打开
             if (isAndroidChrome) {
 //          	schemaStr = AppConfig.PROTOCAL + "://" + schemaStr;
-                schemaStr =  "intent://" + schemaStr +"#Intent;"  +
-                             "scheme="   + AppConfig.PROTOCAL          + ";"+
-                             "package="  + AppConfig.APK_INFO.PKG      + ";"+
-                             "category=" + AppConfig.APK_INFO.CATEGORY + ";"+
-                             "action="   + AppConfig.APK_INFO.ACTION   + ";"+
-                             "S.browser_fallback_url=" + encodeURIComponent(AppConfig.FAILBACK.ANDROID) + ";" +
-                             "end";
+//              schemaStr =  "intent://" + schemaStr +"#Intent;"  +
+//                           "scheme="   + AppConfig.PROTOCAL          + ";"+
+//                           "package="  + AppConfig.APK_INFO.PKG      + ";"+
+//                           "category=" + AppConfig.APK_INFO.CATEGORY + ";"+
+//                           "action="   + AppConfig.APK_INFO.ACTION   + ";"+
+//                           "S.browser_fallback_url=" + encodeURIComponent(AppConfig.FAILBACK.ANDROID) + ";" +
+//                           "end";
+				schemaStr = AppConfig.PROTOCAL + "://" + schemaStr;
             } else {
                 schemaStr = AppConfig.PROTOCAL + "://" + schemaStr;
             }
+            alert(schemaStr);
             return schemaStr;
         },
 

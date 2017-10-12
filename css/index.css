@@ -100,6 +100,7 @@ body,
   width: 100%;
   height: 100%;
   overflow: hidden;
+  position: relative;
 }
 .page {
   background-color: #eee;
@@ -205,11 +206,9 @@ body,
 .swiper-container img {
   display: block;
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   border: none;
-  -o-object-fit: fill;
-  object-fit: fill;
-  height: 13rem;
 }
 .swiper-container .swiper-pagination .swiper-pagination-bullet {
   width: 10px;

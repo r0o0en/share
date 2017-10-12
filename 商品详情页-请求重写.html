@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>商品详情页</title>
+		<meta name="author" content="" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+		<meta name="telephone=no" content="format-detection">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
+		<link rel="stylesheet" type="text/css" href="js/weui/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="js/weui/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+		<!--<meta name='apple-itunes-app' content='app-id=1156008352'>-->
+	</head>
+
+	<body>
+		<div class="open-app">
+			<div class="flex">
+				<div class="info flex">
+					<div class="esc "><i>x</i></div>
+					<div class="flex-1 flex">
+						<img class="logo" src="img/logo.png" />
+						<p>打开吉粮惠民APP购物<br />购买即补贴粮票</p>
+					</div>
+				</div>
+				<!--<a class="open-app-btn flex-1" href="hmclient://TYPE=1&ID=110" id="openApp">打开APP</a>-->
+				<a class="open-app-btn flex-1" id="openApp">打开APP</a>
+			</div>
+		</div>
+
+		<div class="page">
+			<div class="page-content">
+				<section class="swiper-container">
+					<div class="swiper-wrapper"></div>
+					<div class="swiper-pagination"></div>
+				</section>
+
+				<div class="page-header">
+					<h1 class="lib-context"></h1>
+					<div class="flex lib-context price-line">
+						<div class="flex-1"><span class="cl-red"></span><small><strike></strike></small> </div>
+						<div class="cu-quantity">
+							<button class="cu-minus"></button>
+							<input class="cu-input" type="number" value="1" maxlength="" />
+							<button class="cu-add"></button>
+						</div>
+					</div>
+				</div>
+
+				<section class="weui-cells">
+					<a class="weui-cell weui-cell_access" href="javascript:;">
+
+						<div class="weui-cell__hd"><img class=" ico-30 " src="img/ico-check.png"></div>
+						<div class="weui-cell__bd">
+							<p class="attribute">规格：暂无</p>
+						</div>
+					</a>
+				</section>
+
+				<section class="weui-cells">
+					<a class="weui-cell weui-cell_access" href="javascript:;">
+						<div class="weui-cell__hd"><img class=" ico-30 " src="img/ico-check.png"></div>
+						<div class="weui-cell__bd">
+							<p class="store-name">商城</p>
+						</div>
+					</a>
+				</section>
+
+				<section class="weui-cells up-hint">
+					<a class="weui-cell weui-cell_access" href="javascript:;">
+						<div class="weui-cell__bd">
+							<p style="text-align: center;">上拉查看图文详情</p>
+						</div>
+					</a>
+				</section>
+
+				<div class="load-more-info-content lib-context">
+
+				</div>
+
+				<div class="weui-loadmore">
+					<i class="weui-loading"></i>
+					<span class="weui-loadmore__tips">正在加载</span>
+				</div>
+
+				<div class="occupy-footer"></div>
+			</div>
+		</div>
+		<footer class="page-footer page-footer-fixed">
+			<div class="flex">
+				<a href="javascript:;" class="flex-1 weui-btn weui-btn_yello no-radius">加入购物车</a>
+				<a href="javascript:;" class="flex-1 weui-btn weui-btn_red no-radius">去结算</a>
+			</div>
+		</footer>
+
+		<!--<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>-->
+		<!--<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>-->
+		<script src="js/zepto/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/zepto/fx.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/weui/jquery-weui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper-3.4.2.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/tool-nativeSchema.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index_load.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				/* type类型: {normal:标准, spellLuck:拼手气 , car:汽车 }*/
+				var type,
+					urldata = {},
+					types = {
+						"normal": false, //标准
+						"spellLuck": false, //拼手气
+						"car": false, //汽车
+					};
+				try {
+					//获取url带参					
+					urldata = JSON.parse(getRequest().data);
+					//for(var i in urldata) {console.log(i, urldata[i]);}
+					//类型
+					type = urldata.type;
+					if(type && typeof types[type] != 'undefined' && urldata.url && urldata.goodsId) {
+						types[type] = true;
+						//根据url给定的参数请求数据
+						requireAjax();
+						//按钮绑定打开app
+						openApp();
+					}
+				} catch(e) {
+					echoError('url带参获取error！', false);
+				}
+				
+				/*open 打开APP*/
+				function openApp() {
+					//加载打开APP
+					$(".open-app").addClass('show');
+					$(".open-app .esc").on('click',function (e) {
+						$(".open-app").removeClass('show');
+						setTimeout(function () {
+							$(".open-app").remove();
+						},400)
+					})
+					$("#openApp").on('click',function(e){
+						e.preventDefault();
+						nativeSchema.loadSchema(
+							{schema:"type="+type+"&goodsId="+urldata.goodsId}
+						);
+					});
+				}
+				/*ajax 请求数据*/
+				function requireAjax() {
+					try {
+						$.ajax({
+							type: "get",
+							url: urldata.url,
+							url: "http://test1.hmsh.com/v1.1/goods/getGoods",
+							data: {
+								type: type,
+								goodsSkuId: urldata.goodsId
+							},
+							dataType: 'jsonp',
+							success: function(data) {
+								//console.log(data);
+								//for(var i in data) {console.log(i, data[i]);}
+								if(data.code == 0) {
+									//操作dom;
+									operationDom(data.data);
+								}
+							},
+							complete: function(xhr, status) {},
+							error:function () {
+								console.log(arguments);
+							}
+						});
+					} catch(e) {
+						echoError('ajax请求error！');
+					}
+				}
+
+				/*根据ajax请求的数据操作dom*/
+				function operationDom(data) {
+					console.log(data);
+					//for(var i in data) {console.log(i, data[i]);};
+					//幻灯片
+					domSlide(data);
+					//商品名称
+					domTradeName(data);
+					//商品价格 || 拼手气进度
+					domPrices(data);
+					//已选规格
+					domSpecification(data);
+					//店铺名
+					domStoreName(data);
+					//加载详情
+					domLoadIntro(data);
+				};
+
+				/*dom 幻灯片*/
+				function domSlide(data) {
+					//console.log(data);
+					/*	根据type判断幻灯片取用的参数名
+					 * 	拼手气 ？ goodsImg : imgs 
+					 */
+					var img = types.spellLuck ? data.goodsImg : data.imgs;
+					if(img) {
+						//正则处理img.src字符串,返回数组
+						img = getImgurl(img);
+						//判断img 是否有值？
+						judegVariable(img, function(val) {
+							var str = '';
+							for(i in val) {
+								str += '<div class="swiper-slide"><img src="' + val[i] + '@w800" alt=""></div>';
+							}
+							$('.swiper-wrapper').append(str);
+							$(".swiper-container").swiper({
+								pagination: '.swiper-pagination',
+								autoplay: "5000"
+							});
+						});
+					} else {
+						echoError('幻灯片(属性:' + img + ')无效!');
+					}
+				};
+				/*dome 商品名称*/
+				function domTradeName(data) {
+
+					judegVariable(data.goodsName, function() {
+						$('.page-header h1').text(data.goodsName);
+					})
+				}
+				/*dome 商品价格 || 拼手气进度  || 加减控制器*/
+				function domPrices(data) {
+					/*
+					 price	价格
+					 returnPointPercent	粮票补贴
+					 deductPricePercent	粮票可抵扣百分比
+					 
+					 limitAmount	//每人限购
+					 amount	//拼手气 需要的全部份数
+					 leftAmount	// 拼手气 剩余份数
+					 percent	//拼手气 现在的百分比
+					 * */
+					var str = '',
+						cuQuantity_data = {}, //加减控制器参数 {max：单次最大购买上限}
+						now = judegVariable(data.price, function(val) { //获取价格
+							return parseFloat(val);
+						});
+					if(now) {
+						if(data.returnPointPercent) { //粮票补贴
+							str += labelHtml('粮票补贴', data.returnPointPercent);
+						} else if(data.deductPricePercent) { //粮票可抵扣百分比
+							str += labelHtml('粮票抵扣', data.deductPricePercent);
+							var before = now;
+							var now = ((1 - parseInt(data.deductPricePercent) / 100) * now); //现在的价格 ||
+						}
+						now = now.toFixed(2);
+						str += '<span class="cl-red">￥' + now + '</span>';
+						if(before) {
+							//str += '<small><strike>￥'+before+'</strike></small>'
+							str += '<small>&nbsp;+&nbsp;' + (before - now).toFixed(2) + '<small>粮票</small></small>'
+						}
+					} else {
+						str += '<span class="cl-red">暂无定价</span>';
+					}
+
+					if(types.spellLuck) { // 拼手气
+						if(typeof data.amount != undefined && typeof data.leftAmount != undefined && typeof data.percent != undefined) {
+							var amount = data.amount, //拼手气 需要的全部份数
+								leftAmount = data.leftAmount, // 拼手气 剩余份数
+								percent = data.percent; // 拼手气 现在的百分比
+							if(typeof data.limitAmount != 'undefined') { //每人限购
+								cuQuantity_data.max = leftAmount <= data.limitAmount ? leftAmount : data.limitAmount;
+							} else {
+								cuQuantity_data.max = leftAmount;
+							}
+							str = '<div class="weui-progress__bar">' +
+								'<span class="left-amount">' + (percent) + '%</span>' +
+								'<div class="weui-progress__inner-bar js_progress" style="width: ' + (percent) + '%;"></div>' +
+								'<span class="amount">' + amount + '份</span>' +
+								'</div>' + str;
+
+						}
+					}else{ // 标准||汽车
+						judegVariable(data.limited,function (val) {
+							cuQuantity_data.max = val;
+						})
+					} 
+					$('.price-line > .flex-1').empty().append(str);
+					//加减控制器
+					cuQuantity(cuQuantity_data);
+					//返回 粮票补贴/粮票抵扣
+					function couponHtml(li) {
+						var arr = [];
+						if(100 >= li.returnPointPercent && li.returnPointPercent > 0) { /**(现金消费返积分比例)*/
+							arr = ['补贴粮票', li.returnPointPercent];
+						} else if(100 >= li.deductPricePercent && li.deductPricePercent > 0) { /**(积分消费抵扣百分比)*/
+							arr = ['粮票抵扣', li.deductPricePercent];
+						}
+						return arr;
+					};
+					//返回 粮票补贴/粮票抵扣 百分比 html
+					function labelHtml(type, num) {
+						return '<div class="float-top">' +
+							'<p class="stamps-subsidies fl-l"><span class="text">' + type + '</span><span class="number">' + num + '%</span></p>' +
+							'</div>';
+					};
+				};
+				/*dome 已选规格*/
+				function domSpecification(data) {
+					var str =judegVariable(data.attributeList);
+					$('.attribute').text('已选' + (str ? '：'+str :''));
+				}
+				/*dome 店铺名*/
+				function domStoreName(data) {
+					if(types.car){
+						$('.store-name').parents('.weui-cells').hide();
+					}else{						
+						var str = judegVariable(data.storeName);
+						$('.store-name').text(str?str:'商城');
+					}
+				}
+				/*dome 加载详情*/
+				function domLoadIntro(data) {
+					var str = false;
+					judegVariable(data.desc,function (val) {
+						str = val;
+					}) 
+					var loading = false,					
+						callback = function() {
+							if(loading) return;
+							loading = true;
+							$.showLoading();
+							setTimeout(function() {
+								$.hideLoading();
+								if(str){
+									loading = false;
+									$('.load-more-info-content ').append(str);
+									str = false;
+								}else{
+									$.toast("没有更多了", "text");
+									callback = function(){};
+									$('.page-content').destroyInfinite();
+									$('.weui-loadmore').animate({
+										'height':'0px',
+										'opacity':'0',
+										'margin':'0 auto'
+									},400,function () {
+										$('.weui-loadmore').addClass('hide');	
+									});
+								}
+							}, 1500); //模拟延迟 
+						};
+					window.onload = function () {
+						$('.page').infinite(25).on("infinite",callback);
+						$('.page').addClass('yjjs');
+					};
+				}
+				/*error打印*/
+				function echoError(str) {
+					if(!str) {
+						return false;
+					}
+					console.error(str);
+					alert(str);
+
+				};
+			})
+		</script>
+	</body>
+
+</html>

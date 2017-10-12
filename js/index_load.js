@@ -26,8 +26,6 @@ var browser = {
 //获取参数
 function getRequest() {
 	var href =location.search;
-//	href=href.replace(/%7B/ig,'{');
-//	href=href.replace(/%7D/ig,'}');
 	var url = decodeURI(href); //获取url中"?"符后的字串
 	var theRequest = new Object();
 	if(url.indexOf("?") != -1) {
@@ -50,6 +48,44 @@ function getImgurl(str) {
 		}
 	}
 }
+//判断变量存在并有值（false也属于有值）
+function judegVariable(variable,callback) {
+	var val =  (variable  || typeof variable == 'boolean'),
+		fun =  (callback && typeof callback =="function");
+	var typeofs = typeof variable,
+		judeg = function() {
+			if(typeofs == "string" || typeofs == "object"){
+				return variable.length>0;
+			}
+			return variable;
+		}();
+	
+	if(fun){
+		if(val){
+			if(judeg){
+				return callback(variable);				
+			}
+		}
+	}else{
+		if(val){
+			return variable;
+		}else{
+			return undefined;
+		}
+	}
+	
+//	if( variable  || typeof variable == 'boolean' ){
+//		if(variable.length<1){
+//			//return undefined ;
+//		}else if(callback && typeof callback =="function"){
+//			return callback(variable);
+//		}else{
+//			return variable;
+//		}
+//	}else{
+//		//return undefined ;
+//	}
+}
 //传入对象、属性名、默认值，属性存在就返回属性值，否则返回默认值
 function getAttribute(obj, key, defaults) {
 	if(typeof obj != 'object' || !key) { return false; }
@@ -59,7 +95,7 @@ function getAttribute(obj, key, defaults) {
 	} else if(defaults) {
 		return defaults;
 	} else {
-		return false;
+		return undefined;
 	}
 }
 
