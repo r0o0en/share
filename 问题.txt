@@ -1,0 +1,5 @@
+1、
+安卓url跳转带参数  data={"storeName"：} storeName 没有对应的键值，json格式报错;
+
+2、
+安卓微信内置浏览器 使用 测试的数据请求接口（test1.hmsh.com/v1.1/goods/getGoods） 无限请求超时  ，使用 正式接口（app.jlhmsh.com/v1.1/goods/getGoods）可以成功查询 

@@ -130,6 +130,7 @@ body,
   height: 50px;
   line-height: 50px;
   color: white;
+  opacity: 0;
   -webkit-transition: 0.6s ease;
   -moz-transition: 0.6s ease;
   -ms-transition: 0.6s ease;
@@ -138,6 +139,7 @@ body,
 }
 .open-app.show {
   top: 0;
+  opacity: 1;
 }
 .open-app,
 .open-app * {
@@ -194,10 +196,10 @@ body,
 }
 .page-header h1 {
   font-size: 0.75rem;
-  font-size: 1.4;
   font-family: arial, simsun, "microsoft yahei";
   font-weight: 500;
   color: #333;
+  min-height: 3.4 rem;
 }
 /* 幻灯 */
 .swiper-container {
@@ -486,15 +488,15 @@ body,
   position: relative;
   padding-left: 60px;
 }
-.stamps-subsidies span {
+.stamps-subsidies mark {
   text-align: center;
   border-width: 1px;
   font-size: 12px;
   line-height: 16px;
   height: inherit;
-  border-color: #ff7b00;
+  border-color: #009c3b;
 }
-.stamps-subsidies span.text {
+.stamps-subsidies mark.text {
   text-align: center;
   display: block;
   width: 60px;
@@ -503,7 +505,7 @@ body,
   top: 0;
   border-style: solid;
   color: white;
-  background-color: #ff7b00;
+  background-color: #009c3b;
   -webkit-border-top-left-radius: 4px;
   -moz-border-top-left-radius: 4px;
   border-top-left-radius: 4px;
@@ -511,8 +513,8 @@ body,
   -moz-border-bottom-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-.stamps-subsidies span.number {
-  color: #ff7b00;
+.stamps-subsidies mark.number {
+  color: #009c3b;
   text-align: center;
   padding: 0 4px;
   display: block;

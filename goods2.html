@@ -10,7 +10,7 @@
 
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui, viewport-fit=cover">
 		<meta name="telephone=no" content="format-detection">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -102,6 +102,11 @@
 			</div>
 		</footer>
 
+		<script src="js/vconsole.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// init vConsole
+  			var vConsole = new VConsole();
+		</script>
 		<!--<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>-->
 		<!--<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>-->
 		<script src="js/zepto/zepto.min.js" type="text/javascript" charset="utf-8"></script>
@@ -110,7 +115,9 @@
 		<script src="js/swiper-3.4.2.jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/tool-nativeSchema.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/index_load.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script type="text/javascript">
+			
 			$(function() {
 				/* type类型: {normal:标准, spellLuck:拼手气 , car:汽车 }*/
 				var type,
@@ -120,70 +127,71 @@
 						"spellLuck": false, //拼手气
 						"car": false, //汽车
 					};
-				try {
-					//获取url带参					
-					urldata = JSON.parse(getRequest().data);
-					//for(var i in urldata) {console.log(i, urldata[i]);}
-					//类型
-					type = urldata.type;
-					if(type && typeof types[type] != 'undefined' && urldata.url && urldata.goodsId) {
-						types[type] = true;
-						//根据url给定的参数请求数据
-						requireAjax();
-						//按钮绑定打开app
-						openApp();
-					}
-				} catch(e) {
-					echoError('url带参获取error！', false);
+				//获取url带参					
+				urldata = JSON.parse(getRequest().data);
+				//for(var i in urldata) {console.log(i, urldata[i]);}
+				//类型
+				type = urldata.type;
+				if(type && typeof types[type] != 'undefined' && urldata.url && urldata.goodsId) {
+					types[type] = true;
+					//根据url给定的参数请求数据
+					requireAjax();
+					//按钮绑定打开app
+					openApp();
 				}
-				
+
 				/*open 打开APP*/
 				function openApp() {
 					//加载打开APP
 					$(".open-app").addClass('show');
-					$(".open-app .esc").on('click',function (e) {
+					$(".open-app .esc").on('click', function(e) {
 						$(".open-app").removeClass('show');
-						setTimeout(function () {
+						setTimeout(function() {
 							$(".open-app").remove();
-						},400)
+						}, 400)
 					})
-					$("#openApp").on('click',function(e){
+					$("#openApp").on('click', function(e) {
 						e.preventDefault();
-						nativeSchema.loadSchema(
-							{schema:"type="+type+"&goodsId="+urldata.goodsId}
-						);
+						nativeSchema.loadSchema({
+							schema: "type=" + type + "&goodsId=" + urldata.goodsId
+						});
 					});
-				}
+				};
 				/*ajax 请求数据*/
 				function requireAjax() {
-					try {
+//					try {
 						$.ajax({
 							type: "get",
-							url: urldata.url,
-							url: "http://test1.hmsh.com/v1.1/goods/getGoods",
+							url:urldata.url,
 							data: {
 								type: type,
 								goodsSkuId: urldata.goodsId
 							},
 							dataType: 'jsonp',
 							success: function(data) {
-								//console.log(data);
-								//for(var i in data) {console.log(i, data[i]);}
 								if(data.code == 0) {
-									//操作dom;
-									operationDom(data.data);
+									if(data.data){
+										//操作dom;
+										operationDom(data.data);	
+									}else{
+										alert('获取数据失败 !（ data 为null ）');	
+									}
+									
+								}else{
+									alert('请求失败 !（ code!=0 ）');
 								}
 							},
-							complete: function(xhr, status) {},
-							error:function () {
-								console.log(arguments);
+							complete: function(xhr, status) {
+//								alert('(ajax-complete) status >> ' +status);
+							},
+							error:function (xhr, errorType, error) {
+								alert('(ajax-error) errorType >> '+ errorType +' ; error >> ' +error);
 							}
 						});
-					} catch(e) {
-						echoError('ajax请求error！');
-					}
+//					} catch(e) {
+//						echoError('ajax请求error！');
+//					}
 				}
-
 				/*根据ajax请求的数据操作dom*/
 				function operationDom(data) {
 					console.log(data);
@@ -201,7 +209,6 @@
 					//加载详情
 					domLoadIntro(data);
 				};
-
 				/*dom 幻灯片*/
 				function domSlide(data) {
 					//console.log(data);
@@ -287,11 +294,11 @@
 								'</div>' + str;
 
 						}
-					}else{ // 标准||汽车
-						judegVariable(data.limited,function (val) {
+					} else { // 标准||汽车
+						judegVariable(data.limited, function(val) {
 							cuQuantity_data.max = val;
 						})
-					} 
+					}
 					$('.price-line > .flex-1').empty().append(str);
 					//加减控制器
 					cuQuantity(cuQuantity_data);
@@ -314,51 +321,51 @@
 				};
 				/*dome 已选规格*/
 				function domSpecification(data) {
-					var str =judegVariable(data.attributeList);
-					$('.attribute').text('已选' + (str ? '：'+str :''));
+					var str = judegVariable(data.attributeList);
+					$('.attribute').text('已选' + (str ? '：' + str : ''));
 				}
 				/*dome 店铺名*/
 				function domStoreName(data) {
-					if(types.car){
-						$('.store-name').parents('.weui-cells').hide();
-					}else{						
-						var str = judegVariable(data.storeName);
-						$('.store-name').text(str?str:'商城');
-					}
+					//					if(types.car){
+					//						$('.store-name').parents('.weui-cells').hide();
+					//					}else{						
+					var str = judegVariable(urldata.storeName);
+					$('.store-name').text(str ? str : '商城');
+					//					}
 				}
 				/*dome 加载详情*/
 				function domLoadIntro(data) {
 					var str = false;
-					judegVariable(data.desc,function (val) {
+					judegVariable(data.desc, function(val) {
 						str = val;
-					}) 
-					var loading = false,					
+					})
+					var loading = false,
 						callback = function() {
 							if(loading) return;
 							loading = true;
 							$.showLoading();
 							setTimeout(function() {
 								$.hideLoading();
-								if(str){
+								if(str) {
 									loading = false;
 									$('.load-more-info-content ').append(str);
 									str = false;
-								}else{
+								} else {
 									$.toast("没有更多了", "text");
-									callback = function(){};
+									callback = function() {};
 									$('.page-content').destroyInfinite();
 									$('.weui-loadmore').animate({
-										'height':'0px',
-										'opacity':'0',
-										'margin':'0 auto'
-									},400,function () {
-										$('.weui-loadmore').addClass('hide');	
+										'height': '0px',
+										'opacity': '0',
+										'margin': '0 auto'
+									}, 400, function() {
+										$('.weui-loadmore').addClass('hide');
 									});
 								}
 							}, 1500); //模拟延迟 
 						};
-					window.onload = function () {
-						$('.page').infinite(25).on("infinite",callback);
+					window.onload = function() {
+						$('.page').infinite(25).on("infinite", callback);
 						$('.page').addClass('yjjs');
 					};
 				}

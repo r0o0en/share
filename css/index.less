@@ -117,6 +117,7 @@ html,body,.page{
     height: @h;
     line-height: @h;
     color: white;
+    opacity: 0;
     -webkit-transition: 0.6s ease;
     -moz-transition: 0.6s ease;
     -ms-transition: 0.6s ease;
@@ -124,6 +125,7 @@ html,body,.page{
     transition: 0.6s ease;
     &.show{
         top: 0;
+        opacity: 1;
     }
     &,*{
         -webkit-box-sizing: border-box;
@@ -184,10 +186,10 @@ html,body,.page{
     background-color: white;
     h1{
         font-size: 0.75rem;
-        font-size: 1.4;
         font-family: arial,simsun,"microsoft yahei";
         font-weight: 500;
         color: #333;
+        min-height: 0.75*1.6*2 + 1 rem;
     }
 }
 
@@ -308,7 +310,6 @@ html,body,.page{
         
     }
     input{text-align: center;}
-    
 }
 
 .occupy-footer,
@@ -452,14 +453,15 @@ html,body,.page{
 .stamps-subsidies{
     float: left;
     //<p class="stamps-subsidies fl-l"><span class="text">补贴粮票</span><span class="number">100%</span></p>
-    @border-color:#ff7b00;
+    @border-color:#009c3b;
+//  @border-color:#ff7b00;
     @border-radius-width:4px;
     font-size: 0;
     height:18px;
     position: relative;
     padding-left: 60px;
     
-    span{
+    mark{
         text-align: center;
         border-width: 1px;
         font-size: 12px;

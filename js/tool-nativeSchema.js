@@ -38,7 +38,6 @@
 
         // 协议头
         PROTOCAL:"hmclient",
-        PROTOCAL:"hmclient",
 
         // 主页
         HOME: "openapp",
@@ -121,11 +120,11 @@
 //                           "action="   + AppConfig.APK_INFO.ACTION   + ";"+
 //                           "S.browser_fallback_url=" + encodeURIComponent(AppConfig.FAILBACK.ANDROID) + ";" +
 //                           "end";
+
 				schemaStr = AppConfig.PROTOCAL + "://" + schemaStr;
             } else {
                 schemaStr = AppConfig.PROTOCAL + "://" + schemaStr;
             }
-            alert(schemaStr);
             return schemaStr;
         },
 
@@ -174,7 +173,6 @@
             } else {
                 body.appendChild(iframe);
                 iframe.src = schemaUrl;
-
             }
 
             // 如果LOAD_WAITING时间后,还是无法唤醒app，则直接打开下载页
