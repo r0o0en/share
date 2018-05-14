@@ -1,0 +1,399 @@
+/*
+ 参数
+ * */
+@main-padding:15px;
+@margin:15px;
+@font-size-title:22px;
+@font-size-text:14px;
+@red-color:#ff0000;
+@ico-radio-base64:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAAH608TDAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+dpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMTgtMDUtMDJUMDk6MjY6MzIrMDg6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDE4LTA1LTAyVDA5OjI3OjE4KzA4OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDE4LTA1LTAyVDA5OjI3OjE4KzA4OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGNDBFQkUzRDREQTcxMUU4OTRFNUE3M0FGMjc3ODMwOSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGNDBFQkUzRTREQTcxMUU4OTRFNUE3M0FGMjc3ODMwOSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkY0MEVCRTNCNERBNzExRTg5NEU1QTczQUYyNzc4MzA5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkY0MEVCRTNDNERBNzExRTg5NEU1QTczQUYyNzc4MzA5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+kDTi4gAAAOJJREFUeNpiNNMJlGFgYJjPAAHPWIDEFSAWgAowMDGgAZDADyQ+G0AAMQLN2A3jgfS7YtWLwgEIIJCeD8jW4FRJkiRAAKE4BQ24ojgNDciRbydtJD8ABBDeEMIDpJgYyAMs5GpkGEIaWaAhGkqCnqdAfAwggEDRMQPIUCZBYx7ItnIg/kiKbeT47Q8T3UJxVNOAaOIlUQ8/KO2JArElCZoEAQIMlMoPAxlHgXgPA22ALhAXALE8C5TjQ2IOIQXsgVomx8RARzBq2ahlo5YNM8tAxdVUID4LxOdoZIc6EB8B4kcASUoe+U73j4IAAAAASUVORK5CYII=';
+@ico-radio-active-base64:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAAH608TDAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+dpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMTgtMDUtMDJUMDk6MjY6MzIrMDg6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDE4LTA1LTAyVDA5OjI3OjExKzA4OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDE4LTA1LTAyVDA5OjI3OjExKzA4OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGMDBCRUYwMDREQTcxMUU4QUU0N0Q5QzQ0MTBDRERFRiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGMDBCRUYwMTREQTcxMUU4QUU0N0Q5QzQ0MTBDRERFRiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkYwMEJFRUZFNERBNzExRThBRTQ3RDlDNDQxMENEREVGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYwMEJFRUZGNERBNzExRThBRTQ3RDlDNDQxMENEREVGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hFHMegAAAptJREFUeNpiNNMJ5GRgYNjEAAGfWIDELiC2hQowMEHp/0D8FMQAqfgIxIwwFQABxAg0YzeMA5J1hWmB6WUGqYJx/oIIgAAC6TmMbA0yQLYSBkCKhWEWMCBZ/x/ZKQABBDJ2B9RCdOAK0unBgB1EMWERZAXiBzAHsQGxNZLkLyBWgEmCOFuBWBndQTDXCkAVSSCbz4LEZkOz+xNAAIG8cgDIcGAgDYQz4fA/NuAHxD+g7mVmIVLTP6gGRvT4AoHn0BDQRRJzh4pVIWtCDwBJKP0ViLmgyYQZXQM2G2GAG6q4GZcmmI2gNBeEJZCuAXEoFj2fgHgZQACBogNksgUJUTERZNseIK4lQdMKJlgeIQH8ZSJBMSj+cnCFIjZwDBqiy4jV5AXElkBcBsTvkDWtgUYwOmCG5p/HQNyNHskV0BTxBk3Tbygthy1l3AFiI2iZ8RgqdgDqDzF8yek8NM/JQDXaA3ENEL8mlAYPAnEAVOMLIG4lNuFuBOIkpByAVZMIFvH5eKJAGJT2LuJI0bhAIECAgVJ5F5ChCsQzyEiHxAAhIJ4AxI4s0FRSCcRHGGgH/IHYmIlGhpcDsQm2UoaaQB6Iz0GDjgFaWwfgS1Lkgk5ojScEzV5W0OD7j8syUMadDcROJFgiA81NZVA+KOOzA/FxfJlFCuqyFCDeC8QfsIU7GmiDZmFQ3vkDLfh90NoVWC17BsSy0EoM5FJ+ID4NxK+AWB1NH8hhL6GpGAR2QCtzvCkaW5xdgZZMoCzxGYhFgfgGEN+HBlkztAEmBs2XoILJE5dviE2NJ4CYD1pFb4K2aB4jye+Gtpn+ERu5xKTGndAIj4D6BISdgdiNFItITforoSEBwvvIyRsgjaCycTW0RqRF2QiqrcSBOA0AMtd5EDMsLy4AAAAASUVORK5CYII=';
+/*
+ 覆盖
+ * */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html,body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 750px;
+    margin: 0 auto;
+}
+body{
+    margin: 0 auto;
+    color: #333;
+    font-size: @font-size-text;
+}
+
+img{
+    border: none;
+}
+
+/*
+ 通用
+ * */
+.cl-red{
+    color: @red-color;
+}
+.img{
+    display: block;
+    max-width: 100%;
+    width: auto;
+}
+.img-all{
+    .img;
+    width: 100%;
+    height: auto;
+}
+.padding{
+    padding: @main-padding;
+}
+.padding-left{
+    padding-left: @main-padding;
+}
+.padding-right{
+    padding-right: @main-padding;
+}
+.padding-top{
+    padding-top: @main-padding;
+}
+.padding-bottom{
+    padding-bottom: @main-padding;
+}
+.padding-left-right{
+    padding-left: @main-padding;
+    padding-right: @main-padding;
+}
+.padding-top-bottom{
+    padding-top: @main-padding;
+    padding-bottom: @main-padding;
+}
+.margin{
+    margin: @main-padding;
+}
+.margin-left{
+    margin-left: @main-padding;
+}
+.margin-right{
+    margin-right: @main-padding;
+}
+.margin-top{
+    margin-top: @main-padding;
+}
+.margin-bottom{
+    margin-bottom: @main-padding;
+}
+.margin-left-right{
+    margin-left: @main-padding;
+    margin-right: @main-padding;
+}
+.margin-top-bottom{
+    margin-top: @main-padding;
+    margin-bottom: @main-padding;
+}
+.margin-bottom-no{
+    margin-bottom: 0;
+}
+.margin-top-no{
+    margin-top: 0;
+}
+.margin-top-bottom-no{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+//form
+.form-item{
+    background-color: #f9f9f9;
+    margin: 10px auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items:center;
+    align-items:center;
+    border: 1px solid transparent;
+    padding: 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: border-color .4s ease;
+    -moz-transition: border-color .4s ease;
+    -ms-transition: border-color .4s ease;
+    -o-transition: border-color .4s ease;
+    transition: border-color .4s ease;
+    &.error{
+        border-color: #FF0000;
+    }
+    select,
+    input,
+    label{
+        font-size: @font-size-text;
+//      line-height: 1.6;
+    }
+    input{
+        background-color: inherit;
+        min-width: 0;
+        padding: 0 10px;
+//      &:disabled,
+//      &[disabled]{
+//           opacity: 1;
+//          -webkit-opacity: 1;
+//          -webkit-text-fill-color: #999;
+//          color: #999;
+//          background-color: transparent;
+//      }
+    }
+    .form-item-right{
+        -webkit-flex: 1;
+        flex: 1;
+        border: none;
+        outline: none;
+        -webkit-tap-highlight-color:rgba(0, 0, 0, 0);  
+        -moz-tap-highlight-color:rgba(0, 0, 0, 0);  
+        -ms-tap-highlight-color:rgba(0, 0, 0, 0);  
+        -o-tap-highlight-color:rgba(0, 0, 0, 0);  
+        tap-highlight-color:rgba(0, 0, 0, 0);
+        display: block;  
+    }
+    .form-item-left{
+        margin: 0 10px 0 0;
+        width: 60px;
+        text-align: right;
+        input,label{
+            vertical-align: middle;
+        }
+    }
+    //获取验证码按钮
+    .btn-get-code{
+        padding: 0px 6px;
+        border: 1px solid @red-color;
+        color: @red-color;
+        border-radius: 6px;
+        margin: -1px 0;
+        position: relative;z-index: 1;
+    }
+    //图形验证码
+    .img-code{
+        display: block;
+        border: none;
+        margin: -7px 0;
+        position: relative;z-index: 1;
+        width: 75px;
+        height: 30px;
+        &.hide{
+            display: none;
+        }
+    }
+}
+// radio
+.radio{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    .radio-input,label{
+        display: inline-block;vertical-align: middle;
+    }
+    .radio-input{
+        margin-right: 3px;
+        &,input,i{
+            position: relative;z-index: 0;
+        }
+        input{
+            margin: 0 auto;
+            z-index: 1;
+            opacity: 0;
+            display: block;
+            width: 14px;
+            height: 14px;
+        }
+        i{
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            background-position: center;
+            background-image: url(@ico-radio-base64);
+//          background: url(../img/ico-radio.png) no-repeat center / auto 100%;
+            position: absolute;
+            top: 0;left: 0;right: 0;bottom: 0;
+        }
+        input:checked ~ i{
+            background-image: url(@ico-radio-active-base64);
+//          background-image: url(../img/ico-radio-active.png);
+        }
+    }
+    label{
+        font-size: @font-size-text;
+    }
+}
+// btn
+.btn{
+    //默认行内块
+    display: inline-block;
+    //指针、文本排列
+    cursor:pointer;
+    text-align: center;
+    //默认透明边框
+    border: 1px solid transparent;
+    //禁止双击选中
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    //禁止双击选中-早期浏览器
+    user-select: none;
+    //移动端让背景框不显示
+    &:active{
+        -webkit-tap-highlight-color:rgba(0, 0, 0, 0);  
+        -moz-tap-highlight-color:rgba(0, 0, 0, 0);  
+        -ms-tap-highlight-color:rgba(0, 0, 0, 0);  
+        -o-tap-highlight-color:rgba(0, 0, 0, 0);  
+        tap-highlight-color:rgba(0, 0, 0, 0);  
+    }
+    //禁用模式
+    &.disabled,
+    &[disabled]{ background-color: #ccc;color: #999;border-color: #999;}
+    &[disabled = 'false']{cursor: pointer;}
+    &.btn-radius{
+        @border-radius:4px;
+        -webkit-border-radius: @border-radius;
+        -moz-border-radius: @border-radius;
+        border-radius: @border-radius;        
+    }
+    //:active样式
+    &:active:not(.disabled){
+      // ios 不支持 css :active 解决方案：<body ontouchstart>
+      -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+      -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+      box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    }
+}
+.btn-all{
+    display: block;
+    width: 100%;
+}
+.btn-red{
+    color: white;
+    .defined-btn-color(@red-color);
+}
+.btn-lg{
+    padding: 10px 10px;
+    font-size: @font-size-text;
+}
+.defined-btn-color(@border-color,@bg-color:@border-color,@border-color-active:darken(@border-color,10%),@bg-color-active:darken(@bg-color,10%)){ //btn的边框颜、背景色
+    border-color: @border-color;
+    background-color: @bg-color;
+    &:active{
+        border-color: @border-color-active;
+        background-color: @bg-color-active;
+    }
+}
+/*
+  分享
+ * */
+.html-goods{
+    background-color: #eee;
+    h1{
+        font-size: 16px;
+        font-weight: 500;
+        color: #333;
+        line-height: 1.6;
+        margin: 0 auto;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+}
+//价格
+.price{
+    color: @red-color;
+    small{
+        color: #999;
+        text-decoration: line-through;
+    }
+}
+//幻灯
+.swiper-container{
+    background-color: white;
+}
+.swiper-slide{
+    img{
+        display: block;
+        width: 100%;
+    }
+}
+
+// header
+.header{
+    position: relative;z-index: 0;  
+}
+//内容
+.content{
+    padding: @main-padding;
+    position: relative;z-index: 1;
+}
+.content-card{
+    @radius:4px;
+    padding: @main-padding;
+    background-color: white;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+    .consent-item{
+        //同意协议
+        &>*{
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    .form-item{
+        .radio{
+            margin-right: 5px;
+        }
+    }
+}
+
+// car-item
+.car-item{
+    padding: 10px @main-padding;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    align-items: center;
+    .car-item-box{
+        -webkit-flex: 1;
+        flex: 1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 0 10px;
+    }
+    .car-item-ico{
+        display: block;
+        width: 30px;
+        img&,img{
+            height: auto;
+            display: block;
+            max-width: 100%;
+        }
+    }
+}
+
+// footer
+.footer{
+    min-height: 60px;
+    padding: @main-padding;
+}
